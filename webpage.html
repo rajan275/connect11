@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExportXPunjab - Free Fire Esports</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #0d0d0d;
+      color: #f2f2f2;
+    }
+    header {
+      background: linear-gradient(135deg, #ff4444, #ff6b6b);
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #fff;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      background: url('https://source.unsplash.com/1600x600/?gaming,esports') no-repeat center center/cover;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero h2 {
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 2.5em;
+      color: #ffd700;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      color: #ff4444;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: #1a1a1a;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input, select, button {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+    }
+    button {
+      background: #ffd700;
+      color: #333;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ff6b6b;
+      color: #fff;
+    }
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #ffd700;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ExportXPunjab - Free Fire Esports</h1>
+    <nav>
+      <a href="#events">Events</a>
+      <a href="#register">Register</a>
+      <a href="#prizes">Prizes</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Join the Ultimate Battle Royale!</h2>
+  </div>
+
+  <section id="events">
+    <h2>Upcoming Event</h2>
+    <div class="card">
+      <h3>ExportXPunjab Free Fire Tournament</h3>
+      <p><strong>Date:</strong> May 20, 2026</p>
+      <p><strong>Time:</strong> 7:00 PM IST</p>
+      <p><strong>Venue:</strong> Online</p>
+    </div>
+  </section>
+
+  <section id="prizes">
+    <h2>Prizes</h2>
+    <div class="card">
+      <p><strong>1st Place:</strong> ₹10,000</p>
+      <p><strong>2nd Place:</strong> ₹5,000</p>
+      <p><strong>3rd Place:</strong> ₹2,500</p>
+    </div>
+  </section>
+
+  <section id="register">
+    <h2>Register for Event</h2>
+    <div class="card">
+      <form onsubmit="return fakePaymentAuth()">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="text" placeholder="Free Fire Username" required>
+        <select required>
+          <option value="">Select Team Size</option>
+          <option value="solo">Solo</option>
+          <option value="duo">Duo</option>
+          <option value="squad">Squad</option>
+        </select>
+        <button type="submit">Proceed to Payment</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Follow us on Instagram: 
+      <a href="https://instagram.com/esxportxpunjab" target="_blank">@esxportxpunjab</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 ExportXPunjab Esports. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function fakePaymentAuth() {
+      alert("Payment authentication placeholder. Integrate Razorpay/PayPal/Stripe here.");
+      return false; // Prevent actual form submission
+    }
+  </script>
+</body>
+</html>
