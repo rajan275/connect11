@@ -12,6 +12,7 @@
       --accent-2: #ff6b6b;
       --gold: #ffd700;
       --dev-pic-size: 96px;
+      --glass: rgba(255,255,255,0.04);
     }
     * { box-sizing: border-box; }
     body { font-family: Arial, sans-serif; margin:0; background: radial-gradient(ellipse at 10% 10%, rgba(255,80,80,0.04), transparent 10%),
@@ -114,6 +115,14 @@
     .dev-name{ margin-top:10px; color:#ffd; font-weight:700; font-size:0.95rem }
     .dev-role{ color:#cfcfcf; font-size:0.85rem }
 
+    /* Registration box */
+    .register-box{ width:380px; max-width:92%; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.04); padding:18px; border-radius:12px; box-shadow: 0 12px 30px rgba(0,0,0,0.6); }
+    .register-box h3{ margin:0 0 8px 0; color:var(--gold); font-size:1.1rem }
+    .register-box label{ display:block; font-size:0.85rem; color:#ddd; margin-top:8px }
+    .register-box input, .register-box select{ width:100%; padding:10px 12px; margin-top:6px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:rgba(0,0,0,0.4); color:#fff }
+    .register-box button{ margin-top:12px; width:100%; padding:10px 12px; background:linear-gradient(90deg,var(--accent-1),var(--accent-2)); border:none; color:#fff; font-weight:800; border-radius:8px; cursor:pointer }
+    .register-success{ display:none; margin-top:12px; padding:10px; border-radius:8px; background:rgba(50,200,100,0.08); color:#bfffcf; }
+
     /* Characters gallery */
     .characters{ display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin-top:18px }
     .character{ border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,0.04); background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02)); transition: transform .22s ease, box-shadow .22s ease; }
@@ -201,34 +210,69 @@
         <p style="margin-top:14px; color:#dcdcdc">Organizer: <strong>rajanpreetsingh</strong></p>
       </div>
 
-      <!-- Developer photo and info -->
+      <!-- Developer photo and info (uses GitHub avatar; replace with uploaded image if you provide one) -->
       <div class="dev-box" aria-label="App developer">
-        <!-- Using GitHub avatar for the repo owner if available -->
-        <img src="https://github.com/rajan275.png" alt="Developer rajanpreetsingh">
+        <img src="https://github.com/rajan275.png" alt="Developer rajanpreetsingh" loading="lazy">
         <div class="dev-name">rajanpreetsingh</div>
         <div class="dev-role">App Developer & Organizer</div>
       </div>
     </div>
 
-    <h2 class="section-title" style="margin-top:8px;">Characters</h2>
-    <div class="characters">
-      <div class="character">
-        <img src="https://source.unsplash.com/400x400/?freefire,character,game" alt="Character 1">
-        <div class="cap">Champion - Blaze</div>
+    <!-- Registration + Characters side-by-side -->
+    <div style="display:flex; gap:18px; align-items:flex-start; margin-top:12px; flex-wrap:wrap">
+      <div class="register-box" id="registerBox">
+        <h3><i class="fa fa-user-plus" aria-hidden="true"></i> Tournament Registration</h3>
+        <form id="regForm">
+          <label for="pname">Player / Team Name</label>
+          <input id="pname" name="pname" type="text" required placeholder="Your name or team name">
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com">
+
+          <label for="gameId">In-game ID</label>
+          <input id="gameId" name="gameId" type="text" placeholder="Free Fire ID / UID">
+
+          <label for="platform">Platform</label>
+          <select id="platform" name="platform">
+            <option>Mobile</option>
+            <option>Emulator</option>
+          </select>
+
+          <label for="category">Category</label>
+          <select id="category" name="category">
+            <option>Solo</option>
+            <option>Duo</option>
+            <option>Squad (5)</option>
+          </select>
+
+          <button type="submit">Register Now</button>
+          <div class="register-success" id="regSuccess">Thanks! Your registration has been noted. We'll contact you at the email provided.</div>
+        </form>
       </div>
-      <div class="character">
-        <img src="https://source.unsplash.com/400x400/?gamer,avatar,esports" alt="Character 2">
-        <div class="cap">Striker - Viper</div>
-      </div>
-      <div class="character">
-        <img src="https://source.unsplash.com/400x400/?game,warrior,character" alt="Character 3">
-        <div class="cap">Support - Aurora</div>
-      </div>
-      <div class="character">
-        <img src="https://source.unsplash.com/400x400/?action,hero,game" alt="Character 4">
-        <div class="cap">Rusher - Titan</div>
+
+      <div style="flex:1; min-width:280px">
+        <h2 class="section-title" style="margin-top:0;">Characters</h2>
+        <div class="characters">
+          <div class="character">
+            <img src="https://source.unsplash.com/400x400/?freefire,character,game" alt="Character 1" loading="lazy">
+            <div class="cap">Champion - Blaze</div>
+          </div>
+          <div class="character">
+            <img src="https://source.unsplash.com/400x400/?gamer,avatar,esports" alt="Character 2" loading="lazy">
+            <div class="cap">Striker - Viper</div>
+          </div>
+          <div class="character">
+            <img src="https://source.unsplash.com/400x400/?game,warrior,character" alt="Character 3" loading="lazy">
+            <div class="cap">Support - Aurora</div>
+          </div>
+          <div class="character">
+            <img src="https://source.unsplash.com/400x400/?action,hero,game" alt="Character 4" loading="lazy">
+            <div class="cap">Rusher - Titan</div>
+          </div>
+        </div>
       </div>
     </div>
+
   </section>
 
   <footer>
@@ -236,18 +280,41 @@
     <p class="contact">Reach out to <strong>rajanpreetsingh</strong> — <a href="mailto:rajansandhunarla@gmail.com">rajansandhunarla@gmail.com</a></p>
   </footer>
 
-  <!-- Minimal script: slight parallax on mouse move for hero (optional, lightweight) -->
+  <!-- Minimal scripts: parallax, registration handling -->
   <script>
     (function(){
       const hero = document.querySelector('.hero');
-      if(!hero) return;
-      window.addEventListener('mousemove', e => {
-        const w = window.innerWidth; const h = window.innerHeight;
-        const x = (e.clientX - w/2) / w * 10; const y = (e.clientY - h/2) / h * 10;
-        hero.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      if(hero){
+        window.addEventListener('mousemove', e => {
+          const w = window.innerWidth; const h = window.innerHeight;
+          const x = (e.clientX - w/2) / w * 10; const y = (e.clientY - h/2) / h * 10;
+          hero.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        });
+        window.addEventListener('mouseout', () => { hero.style.transform = '' });
+      }
+
+      // Registration form: client-only - collects and shows success message.
+      const form = document.getElementById('regForm');
+      const success = document.getElementById('regSuccess');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const data = new FormData(form);
+        // In a real app you'd POST to a backend. For now we open mail client as fallback.
+        const pname = data.get('pname') || '';
+        const email = data.get('email') || '';
+        const gameId = data.get('gameId') || '';
+        const platform = data.get('platform') || '';
+        const category = data.get('category') || '';
+        // Show inline success
+        success.style.display = 'block';
+        // Optionally open mail client prefilled
+        const subject = encodeURIComponent('Tournament Registration - ' + pname);
+        const body = encodeURIComponent(`Name/Team: ${pname}%0AEmail: ${email}%0AGame ID: ${gameId}%0APlatform: ${platform}%0ACategory: ${category}`);
+        // Uncomment the next line to open mail client automatically (may be blocked by browser)
+        // window.location.href = `mailto:rajansandhunarla@gmail.com?subject=${subject}&body=${body}`;
+        // clear the form after brief delay
+        setTimeout(()=>{ form.reset(); }, 800);
       });
-      // reduce transform on mouse out
-      window.addEventListener('mouseout', () => { hero.style.transform = '' });
     })();
   </script>
 </body>
