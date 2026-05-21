@@ -8,58 +8,84 @@
   <style>
     :root{
       --bg-1: #0d0d0d;
-      --accent-1: #ff4444;
-      --accent-2: #ff6b6b;
+      --accent-1: #00d4ff;
+      --accent-2: #0099cc;
+      --accent-3: #00ff88;
       --gold: #ffd700;
       --dev-pic-size: 96px;
       --glass: rgba(255,255,255,0.04);
     }
     * { box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; margin:0; background: radial-gradient(ellipse at 10% 10%, rgba(255,80,80,0.04), transparent 10%),
-                                                           radial-gradient(ellipse at 90% 90%, rgba(255,150,50,0.03), transparent 10%),
-                                                           var(--bg-1); color:#f2f2f2; overflow-x:hidden; }
+    body { font-family: Arial, sans-serif; margin:0; background: radial-gradient(ellipse at 10% 10%, rgba(0,212,255,0.06), transparent 15%),
+                                                           radial-gradient(ellipse at 90% 90%, rgba(0,255,136,0.04), transparent 15%),
+                                                           linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 50%, #0d0d0d 100%);
+                                                           color:#f2f2f2; overflow-x:hidden; }
 
-    /* Animated gradient header */
+    /* Animated gradient header with cyan/teal theme */
     header {
       padding:1rem;
       text-align:center;
       position:sticky;
       top:0;
       z-index:40;
-      background: linear-gradient(120deg,var(--accent-1),var(--accent-2));
-      background-size: 200% 200%;
-      animation: headerShift 6s ease infinite;
-      box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+      background: linear-gradient(120deg, #00d4ff, #0099cc, #00ff88, #00d4ff);
+      background-size: 300% 300%;
+      animation: headerShift 8s ease infinite;
+      box-shadow: 0 0 30px rgba(0,212,255,0.4), 0 6px 24px rgba(0,0,0,0.6);
     }
     @keyframes headerShift {
       0%{background-position:0% 50%}
       50%{background-position:100% 50%}
       100%{background-position:0% 50%}
     }
-    header h1 { margin:0; font-size:1.8rem; color:#fff; letter-spacing:1px; }
+    header h1 { margin:0; font-size:1.8rem; color:#fff; letter-spacing:1px; text-shadow: 0 0 20px rgba(0,212,255,0.5); }
     nav { margin-top:8px; }
-    nav a { color:#fff; margin:0 12px; text-decoration:none; font-weight:700; opacity:0.95; transition:opacity .15s; }
-    nav a:hover{opacity:1; text-decoration:underline;}
+    nav a { color:#fff; margin:0 12px; text-decoration:none; font-weight:700; opacity:0.95; transition:all .3s; position: relative; }
+    nav a:hover{
+      opacity:1;
+      text-decoration:underline;
+      text-shadow: 0 0 10px rgba(0,255,136,0.6);
+      transform: translateY(-2px);
+    }
 
-    /* Background visual effects (animated blobs + subtle noise) */
+    /* Enhanced background visual effects with light cyan glow */
     .bg-effect{ position:fixed; inset:0; z-index:0; pointer-events:none; overflow:visible; }
     .blob{
-      position:absolute; border-radius:50%; filter: blur(60px); opacity:0.18; mix-blend-mode:screen;
+      position:absolute; border-radius:50%; filter: blur(60px); opacity:0.2; mix-blend-mode:screen;
       transform: translate3d(0,0,0);
       animation: blobMove 12s ease-in-out infinite;
     }
-    .blob.b1{ width:520px; height:520px; left:-8%; top:10%; background: radial-gradient(circle at 30% 30%, rgba(255,100,100,0.95), rgba(255,80,80,0.6) 40%, transparent 60%); animation-duration:16s; }
-    .blob.b2{ width:420px; height:420px; right:-6%; bottom:8%; background: radial-gradient(circle at 60% 40%, rgba(255,200,80,0.9), rgba(255,140,60,0.55) 40%, transparent 70%); animation-duration:18s; }
-    .blob.b3{ width:300px; height:300px; left:40%; top:40%; background: radial-gradient(circle at 40% 60%, rgba(120,140,255,0.12), rgba(120,140,255,0.06) 60%, transparent 80%); animation-duration:20s; }
+    .blob.b1{ width:520px; height:520px; left:-8%; top:10%; background: radial-gradient(circle at 30% 30%, rgba(0,212,255,0.6), rgba(0,153,204,0.3) 40%, transparent 60%); animation-duration:16s; }
+    .blob.b2{ width:420px; height:420px; right:-6%; bottom:8%; background: radial-gradient(circle at 60% 40%, rgba(0,255,136,0.5), rgba(0,204,102,0.2) 40%, transparent 70%); animation-duration:18s; }
+    .blob.b3{ width:300px; height:300px; left:40%; top:40%; background: radial-gradient(circle at 40% 60%, rgba(0,200,255,0.15), rgba(0,150,200,0.08) 60%, transparent 80%); animation-duration:20s; }
     @keyframes blobMove{
       0%{ transform: translateY(0) scale(1) }
       50%{ transform: translateY(-40px) scale(1.08) }
       100%{ transform: translateY(0) scale(1) }
     }
-    /* subtle moving grain overlay */
-    .noise{ position:fixed; inset:0; z-index:10; opacity:0.04; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>'); pointer-events:none; }
 
-    /* Hero with neon glow */
+    /* Animated grid pattern background */
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+      background-image: 
+        linear-gradient(0deg, transparent 24%, rgba(0,212,255,0.04) 25%, rgba(0,212,255,0.04) 26%, transparent 27%, transparent 74%, rgba(0,212,255,0.04) 75%, rgba(0,212,255,0.04) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(0,212,255,0.04) 25%, rgba(0,212,255,0.04) 26%, transparent 27%, transparent 74%, rgba(0,212,255,0.04) 75%, rgba(0,212,255,0.04) 76%, transparent 77%, transparent);
+      background-size: 60px 60px;
+      animation: gridFlow 20s linear infinite;
+    }
+    @keyframes gridFlow {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(60px); }
+    }
+
+    /* subtle moving grain overlay */
+    .noise{ position:fixed; inset:0; z-index:10; opacity:0.02; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"/></filter><rect width="200" height="200" fill="white" filter="url(%23n)" opacity="0.1"/></svg>'); animation: noiseShift 8s linear infinite; }
+    @keyframes noiseShift { 0%{transform:translate(0,0)} 100%{transform:translate(10px,10px)} }
+
+    /* Hero with neon glow - Enhanced */
     .hero {
       background-image: url('https://source.unsplash.com/1600x600/?freefire,esports');
       background-size:cover;
@@ -71,7 +97,6 @@
       position:relative;
       overflow:hidden;
       z-index:20;
-      /* subtle parallax movement */
       animation: heroShift 18s linear infinite;
     }
     @keyframes heroShift{ 0%{background-position:center 40%} 50%{background-position:center 60%} 100%{background-position:center 40%} }
@@ -82,10 +107,29 @@
       background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.6));
       pointer-events:none;
     }
+
+    /* Animated scanner line effect */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(0,212,255,0.8), transparent);
+      animation: scannerLine 3s ease-in-out infinite;
+      z-index: 3;
+    }
+    @keyframes scannerLine {
+      0% { top: 0%; }
+      50% { top: 50%; }
+      100% { top: 100%; }
+    }
+
     .hero h2 {
       position:relative;
       z-index:2;
-      background: linear-gradient(90deg,#ffd966, #ff8a50);
+      background: linear-gradient(90deg, #00d4ff, #00ff88);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -94,43 +138,48 @@
       border-radius:12px;
       backdrop-filter: blur(4px);
       text-shadow:
-        0 0 18px rgba(255,140,60,0.14),
-        0 0 36px rgba(255,200,80,0.08);
-      box-shadow: 0 8px 28px rgba(0,0,0,0.6);
+        0 0 18px rgba(0,212,255,0.2),
+        0 0 36px rgba(0,255,136,0.1);
+      box-shadow: 0 0 30px rgba(0,212,255,0.3), 0 8px 28px rgba(0,0,0,0.6);
       animation: neonPulse 2.8s ease-in-out infinite;
+      border: 2px solid rgba(0,212,255,0.3);
     }
     @keyframes neonPulse{
-      0%{filter: drop-shadow(0 0 6px rgba(255,140,60,0.12))}
-      50%{filter: drop-shadow(0 0 20px rgba(255,140,60,0.28))}
-      100%{filter: drop-shadow(0 0 6px rgba(255,140,60,0.12))}
+      0%{filter: drop-shadow(0 0 6px rgba(0,212,255,0.2)); transform: scale(1);}
+      50%{filter: drop-shadow(0 0 20px rgba(0,212,255,0.4)); transform: scale(1.02);}
+      100%{filter: drop-shadow(0 0 6px rgba(0,212,255,0.2)); transform: scale(1);}
     }
 
     section { padding:40px 20px; max-width:1000px; margin:auto; position:relative; z-index:30; }
-    h2.section-title { color:var(--accent-1); text-align:center; margin-bottom:20px; font-size:1.6rem; }
+    h2.section-title { color:var(--accent-1); text-align:center; margin-bottom:20px; font-size:1.6rem; text-shadow: 0 0 10px rgba(0,212,255,0.2); }
 
-    .card { background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:20px; margin:20px 0; border-radius:10px; border:1px solid rgba(255,255,255,0.03); display:flex; gap:16px; align-items:flex-start; }
+    .card { background:linear-gradient(180deg, rgba(0,212,255,0.04), rgba(0,255,136,0.02)); padding:20px; margin:20px 0; border-radius:10px; border:1px solid rgba(0,212,255,0.15); display:flex; gap:20px; transition: all 0.3s ease; }
+    .card:hover { border-color: rgba(0,212,255,0.4); box-shadow: 0 0 20px rgba(0,212,255,0.1); }
     .card .content{ flex:1 }
     .dev-box{ width:var(--dev-pic-size); flex:0 0 var(--dev-pic-size); text-align:center }
-    .dev-box img{ width:var(--dev-pic-size); height:var(--dev-pic-size); object-fit:cover; border-radius:50%; border:3px solid rgba(255,255,255,0.06); box-shadow: 0 6px 18px rgba(0,0,0,0.6); }
-    .dev-name{ margin-top:10px; color:#ffd; font-weight:700; font-size:0.95rem }
+    .dev-box img{ width:var(--dev-pic-size); height:var(--dev-pic-size); object-fit:cover; border-radius:50%; border:3px solid rgba(0,212,255,0.3); box-shadow: 0 0 20px rgba(0,212,255,0.3), 0 6px 18px rgba(0,0,0,0.6); transition: all 0.3s ease; }
+    .dev-box img:hover { box-shadow: 0 0 30px rgba(0,212,255,0.6), 0 6px 18px rgba(0,0,0,0.6); transform: scale(1.05); }
+    .dev-name{ margin-top:10px; color:#00ff88; font-weight:700; font-size:0.95rem }
     .dev-role{ color:#cfcfcf; font-size:0.85rem }
 
-    /* Registration box */
-    .register-box{ width:380px; max-width:92%; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.04); padding:18px; border-radius:12px; box-shadow: 0 12px 30px rgba(0,0,0,0.6); }
-    .register-box h3{ margin:0 0 8px 0; color:var(--gold); font-size:1.1rem }
+    /* Registration box with cyan theme */
+    .register-box{ width:380px; max-width:92%; background: linear-gradient(180deg, rgba(0,212,255,0.03), rgba(0,255,136,0.02)); border:1px solid rgba(0,212,255,0.2); padding:18px; border-radius:12px; box-shadow: 0 0 15px rgba(0,212,255,0.08); }
+    .register-box h3{ margin:0 0 8px 0; color:var(--accent-1); font-size:1.1rem; text-shadow: 0 0 10px rgba(0,212,255,0.3); }
     .register-box label{ display:block; font-size:0.85rem; color:#ddd; margin-top:8px }
-    .register-box input, .register-box select{ width:100%; padding:10px 12px; margin-top:6px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:rgba(0,0,0,0.4); color:#fff }
-    .register-box button{ margin-top:12px; width:100%; padding:10px 12px; background:linear-gradient(90deg,var(--accent-1),var(--accent-2)); border:none; color:#fff; font-weight:800; border-radius:8px; cursor:pointer }
-    .register-success{ display:none; margin-top:12px; padding:10px; border-radius:8px; background:rgba(50,200,100,0.08); color:#bfffcf; }
+    .register-box input, .register-box select{ width:100%; padding:10px 12px; margin-top:6px; border-radius:8px; border:1px solid rgba(0,212,255,0.2); background:rgba(0,0,0,0.4); color:#fff; transition: all 0.2s ease; }
+    .register-box input:focus, .register-box select:focus{ border-color: rgba(0,212,255,0.6); box-shadow: 0 0 10px rgba(0,212,255,0.2); outline: none; }
+    .register-box button{ margin-top:12px; width:100%; padding:10px 12px; background:linear-gradient(90deg, var(--accent-1), var(--accent-3)); border:none; color:#000; font-weight:800; border-radius:8px; cursor:pointer; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(0,212,255,0.3); }
+    .register-box button:hover{ transform: translateY(-2px); box-shadow: 0 0 25px rgba(0,212,255,0.5); }
+    .register-success{ display:none; margin-top:12px; padding:10px; border-radius:8px; background:rgba(0,255,136,0.15); color:#00ff88; border:1px solid rgba(0,255,136,0.4); }
 
     /* Characters gallery */
     .characters{ display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin-top:18px }
-    .character{ border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,0.04); background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02)); transition: transform .22s ease, box-shadow .22s ease; }
+    .character{ border-radius:10px; overflow:hidden; border:1px solid rgba(0,212,255,0.2); background:linear-gradient(180deg, rgba(0,212,255,0.04), rgba(0,255,136,0.02)); transition: all 0.3s ease; }
     .character img{ width:100%; height:160px; object-fit:cover; display:block; }
-    .character .cap{ padding:10px; font-weight:700; color:#ffd; background:rgba(0,0,0,0.05); font-size:0.95rem }
-    .character:hover{ transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.6); }
+    .character .cap{ padding:10px; font-weight:700; color:#00ff88; background:rgba(0,0,0,0.3); font-size:0.95rem; }
+    .character:hover{ transform: translateY(-6px); box-shadow: 0 0 25px rgba(0,212,255,0.3); border-color: rgba(0,212,255,0.5); }
 
-    /* Floating decorative shapes */
+    /* Floating decorative shapes - Enhanced with light effects */
     .floaters {
       position:absolute;
       inset:0;
@@ -143,24 +192,43 @@
       width:14px;
       height:14px;
       border-radius:50%;
-      background:rgba(255,255,255,0.06);
-      box-shadow: 0 0 10px rgba(255,80,80,0.08);
+      background:rgba(0,212,255,0.4);
+      box-shadow: 0 0 15px rgba(0,212,255,0.3), inset 0 0 10px rgba(255,255,255,0.2);
       animation: floatUp 10s linear infinite;
       mix-blend-mode:screen;
       opacity:0.9;
     }
-    .floater.f1{ left:8%; top:60%; background:rgba(255,90,90,0.08); animation-duration:11s; transform:scale(1.2); }
-    .floater.f2{ left:22%; top:80%; background:rgba(255,200,60,0.06); animation-duration:9s; transform:scale(.9); }
-    .floater.f3{ left:78%; top:20%; background:rgba(255,120,80,0.05); animation-duration:12s; transform:scale(1.5); }
-    .floater.f4{ left:60%; top:78%; background:rgba(200,200,255,0.03); animation-duration:14s; transform:scale(.7); }
+    .floater.f1{ left:8%; top:60%; background:rgba(0,212,255,0.5); animation-duration:11s; transform:scale(1.2); }
+    .floater.f2{ left:22%; top:80%; background:rgba(0,255,136,0.4); animation-duration:9s; transform:scale(.9); }
+    .floater.f3{ left:78%; top:20%; background:rgba(0,212,255,0.3); animation-duration:12s; transform:scale(1.5); }
+    .floater.f4{ left:60%; top:78%; background:rgba(0,255,136,0.3); animation-duration:14s; transform:scale(.7); }
     @keyframes floatUp{
       0%{ transform: translateY(0) rotate(0deg); opacity:.9; }
       50%{ transform: translateY(-40px) rotate(30deg); opacity:.6; }
       100%{ transform: translateY(0) rotate(60deg); opacity:.9; }
     }
 
-    footer { background:#070707; text-align:center; padding:26px 16px; margin-top:40px; color:#bbb; border-top:1px solid rgba(255,255,255,0.02); position:relative; z-index:30 }
-    footer a { color:var(--gold); text-decoration:none; font-weight:700; }
+    /* Pulse ripple effect */
+    .pulse-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid rgba(0,212,255,0.6);
+      animation: ripple 2s infinite;
+    }
+    @keyframes ripple {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    footer { background:#070707; text-align:center; padding:26px 16px; margin-top:40px; color:#bbb; border-top:1px solid rgba(0,212,255,0.1); position:relative; z-index:30 }
+    footer a { color:var(--accent-1); text-decoration:none; font-weight:700; transition: all 0.2s ease; }
+    footer a:hover { text-shadow: 0 0 10px rgba(0,212,255,0.5); }
     .contact { margin-top:8px; font-size:0.98rem; }
 
     /* Responsive tweaks */
@@ -183,12 +251,13 @@
     </nav>
   </header>
 
-  <!-- Background visual blobs & noise -->
+  <!-- Background visual blobs & noise & grid overlay -->
   <div class="bg-effect" aria-hidden="true">
     <div class="blob b1"></div>
     <div class="blob b2"></div>
     <div class="blob b3"></div>
   </div>
+  <div class="grid-overlay" aria-hidden="true"></div>
   <div class="noise" aria-hidden="true"></div>
 
   <div class="hero" role="img" aria-label="Esports arena background">
@@ -205,7 +274,7 @@
     <h2 class="section-title">About Our Platform</h2>
     <div class="card">
       <div class="content">
-        <p>ExportXPunjab is your gateway to competitive Free Fire esports. We organize online tournaments, build communities, and celebrate the spirit of gaming. From quick solo showdowns to full five-player tournaments, our goal is to create a fair and thrilling experience for players of all levels.</p>
+        <p>ExportXPunjab is your gateway to competitive Free Fire esports. We organize online tournaments, build communities, and celebrate the spirit of gaming. From quick solo showdowns to full five-player squads, there's a competition for every skill level. Join thousands of players and compete for glory and rewards!</p>
         <img src="https://source.unsplash.com/800x400/?freefire,characters" alt="Free Fire Characters" style="width:100%;border-radius:10px;margin-top:20px;">
         <p style="margin-top:14px; color:#dcdcdc">Organizer: <strong>rajanpreetsingh</strong></p>
       </div>
