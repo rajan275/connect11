@@ -71,8 +71,8 @@
       z-index: 5;
       pointer-events: none;
       background-image: 
-        linear-gradient(0deg, transparent 24%, rgba(0,212,255,0.04) 25%, rgba(0,212,255,0.04) 26%, transparent 27%, transparent 74%, rgba(0,212,255,0.04) 75%, rgba(0,212,255,0.04) 76%, transparent 77%, transparent),
-        linear-gradient(90deg, transparent 24%, rgba(0,212,255,0.04) 25%, rgba(0,212,255,0.04) 26%, transparent 27%, transparent 74%, rgba(0,212,255,0.04) 75%, rgba(0,212,255,0.04) 76%, transparent 77%, transparent);
+        linear-gradient(0deg, transparent 24%, rgba(0,212,255,0.04) 25%, rgba(0,212,255,0.04) 26%, transparent 27%, transparent 74%, rgba(0,212,255,0.04) 75%, rgba(0,212,255,0.04) 76%, transparent 77%, transparent 74%, rgba(0,212,255,0.04) 75%, rgba(0,212,255,0.04) 76%, transparent 77%),
+        linear-gradient(90deg, transparent 24%, rgba(0,212,255,0.04) 25%, rgba(0,212,255,0.04) 26%, transparent 27%, transparent 74%, rgba(0,212,255,0.04) 75%, rgba(0,212,255,0.04) 76%, transparent 77%, transparent 74%, rgba(0,212,255,0.04) 75%, rgba(0,212,255,0.04) 76%, transparent 77%);
       background-size: 60px 60px;
       animation: gridFlow 20s linear infinite;
     }
@@ -82,7 +82,7 @@
     }
 
     /* subtle moving grain overlay */
-    .noise{ position:fixed; inset:0; z-index:10; opacity:0.02; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"/></filter><rect width="200" height="200" fill="white" filter="url(%23n)" opacity="0.1"/></svg>'); animation: noiseShift 8s linear infinite; }
+    .noise{ position:fixed; inset:0; z-index:10; opacity:0.02; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/></filter><rect width="200" height="200" fill="white" filter="url(%23n)"/></svg>'); animation: noiseShift 1s linear infinite; }
     @keyframes noiseShift { 0%{transform:translate(0,0)} 100%{transform:translate(10px,10px)} }
 
     /* Hero with neon glow - Enhanced */
@@ -153,7 +153,7 @@
     section { padding:40px 20px; max-width:1000px; margin:auto; position:relative; z-index:30; }
     h2.section-title { color:var(--accent-1); text-align:center; margin-bottom:20px; font-size:1.6rem; text-shadow: 0 0 10px rgba(0,212,255,0.2); }
 
-    .card { background:linear-gradient(180deg, rgba(0,212,255,0.04), rgba(0,255,136,0.02)); padding:20px; margin:20px 0; border-radius:10px; border:1px solid rgba(0,212,255,0.15); display:flex; gap:20px; transition: all 0.3s ease; }
+    .card { background:linear-gradient(180deg, rgba(0,212,255,0.04), rgba(0,255,136,0.02)); padding:20px; margin:20px 0; border-radius:10px; border:1px solid rgba(0,212,255,0.15); display:flex; gap:20px; }
     .card:hover { border-color: rgba(0,212,255,0.4); box-shadow: 0 0 20px rgba(0,212,255,0.1); }
     .card .content{ flex:1 }
     .dev-box{ width:var(--dev-pic-size); flex:0 0 var(--dev-pic-size); text-align:center }
@@ -163,12 +163,12 @@
     .dev-role{ color:#cfcfcf; font-size:0.85rem }
 
     /* Registration box with cyan theme */
-    .register-box{ width:380px; max-width:92%; background: linear-gradient(180deg, rgba(0,212,255,0.03), rgba(0,255,136,0.02)); border:1px solid rgba(0,212,255,0.2); padding:18px; border-radius:12px; box-shadow: 0 0 15px rgba(0,212,255,0.08); }
+    .register-box{ width:380px; max-width:92%; background: linear-gradient(180deg, rgba(0,212,255,0.03), rgba(0,255,136,0.02)); border:1px solid rgba(0,212,255,0.2); padding:18px; border-radius:12px; margin:auto }
     .register-box h3{ margin:0 0 8px 0; color:var(--accent-1); font-size:1.1rem; text-shadow: 0 0 10px rgba(0,212,255,0.3); }
     .register-box label{ display:block; font-size:0.85rem; color:#ddd; margin-top:8px }
     .register-box input, .register-box select{ width:100%; padding:10px 12px; margin-top:6px; border-radius:8px; border:1px solid rgba(0,212,255,0.2); background:rgba(0,0,0,0.4); color:#fff; transition: all 0.2s ease; }
     .register-box input:focus, .register-box select:focus{ border-color: rgba(0,212,255,0.6); box-shadow: 0 0 10px rgba(0,212,255,0.2); outline: none; }
-    .register-box button{ margin-top:12px; width:100%; padding:10px 12px; background:linear-gradient(90deg, var(--accent-1), var(--accent-3)); border:none; color:#000; font-weight:800; border-radius:8px; cursor:pointer; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(0,212,255,0.3); }
+    .register-box button{ margin-top:12px; width:100%; padding:10px 12px; background:linear-gradient(90deg, var(--accent-1), var(--accent-3)); border:none; color:#000; font-weight:800; border-radius:8px; cursor:pointer; transition: all 0.2s ease; }
     .register-box button:hover{ transform: translateY(-2px); box-shadow: 0 0 25px rgba(0,212,255,0.5); }
     .register-success{ display:none; margin-top:12px; padding:10px; border-radius:8px; background:rgba(0,255,136,0.15); color:#00ff88; border:1px solid rgba(0,255,136,0.4); }
 
@@ -274,7 +274,7 @@
     <h2 class="section-title">About Our Platform</h2>
     <div class="card">
       <div class="content">
-        <p>ExportXPunjab is your gateway to competitive Free Fire esports. We organize online tournaments, build communities, and celebrate the spirit of gaming. From quick solo showdowns to full five-player squads, there's a competition for every skill level. Join thousands of players and compete for glory and rewards!</p>
+        <p>ExportXPunjab is your gateway to competitive Free Fire esports. We organize online tournaments, build communities, and celebrate the spirit of gaming. From quick solo showdowns to full five-player squads, join our tournaments and prove your skill!</p>
         <img src="https://source.unsplash.com/800x400/?freefire,characters" alt="Free Fire Characters" style="width:100%;border-radius:10px;margin-top:20px;">
         <p style="margin-top:14px; color:#dcdcdc">Organizer: <strong>rajanpreetsingh</strong></p>
       </div>
@@ -386,5 +386,8 @@
       });
     })();
   </script>
+
+  <!-- Supabase Script -->
+  <script src="https://ulqgzhexlgbsormglngy.supabase.co/script.js"></script>
 </body>
 </html>
