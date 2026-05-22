@@ -349,26 +349,8 @@
     <p class="contact">Reach out to <strong>rajanpreetsingh</strong> — <a href="mailto:rajansandhunarla@gmail.com">rajansandhunarla@gmail.com</a></p>
   </footer>
 
-  <!-- Supabase Configuration -->
+  <!-- Parallax effect script -->
   <script>
-    window.supabaseConfig = {
-      apiKey: 'sb_publishable_zTS1Tznu_wNBfXUN9Lq2QQ_FQts5ykc',
-      supabaseUrl: 'https://ulqgzhexlgbsormglngy.supabase.co'
-    };
-  </script>
-
-  <!-- Supabase JavaScript Client Library v2 -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <!-- Parallax effect and Registration with Supabase Integration -->
-  <script>
-    // Initialize Supabase client
-    const supabase = window.supabase.createClient(
-      window.supabaseConfig.supabaseUrl,
-      window.supabaseConfig.apiKey
-    );
-
-    // Parallax effect on hero
     (function(){
       const hero = document.querySelector('.hero');
       if(hero){
@@ -384,6 +366,15 @@
         });
       }
     })();
+  </script>
+
+  <!-- Supabase Integration Script -->
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+    const supabaseUrl = 'https://ulqgzhexlgbsormglngy.supabase.co';
+    const supabaseKey = 'sb_publishable_zTS1Tznu_wNBfXUN9Lq2QQ_FQts5ykc';
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
     // Tournament registration form handler
     const form = document.getElementById('regForm');
@@ -418,6 +409,9 @@
         // Show success message
         success.textContent = '✓ Registration successful! We\'ll contact you soon at ' + email;
         success.style.display = 'block';
+        success.style.background = 'rgba(0,255,136,0.15)';
+        success.style.color = '#00ff88';
+        success.style.borderColor = 'rgba(0,255,136,0.4)';
         form.reset();
 
         // Auto-hide success message after 5 seconds
@@ -428,7 +422,7 @@
 
       } catch (error) {
         console.error('Supabase registration error:', error);
-        success.textContent = '✗ Error: ' + (error.message || 'Registration failed');
+        success.textContent = '✗ Error: ' + (error.message || 'Registration failed. Please try again.');
         success.style.background = 'rgba(255,0,0,0.15)';
         success.style.color = '#ff4444';
         success.style.borderColor = 'rgba(255,0,0,0.4)';
