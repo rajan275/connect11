@@ -21,7 +21,7 @@
             margin: 0; 
             background: 
                 linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="bg1" cx="0.5" cy="0.5" r="0.8"><stop offset="0%" stop-color="%2300d4ff" stop-opacity="0.3"/><stop offset="50%" stop-color="%230055ff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23000"/></radialGradient><radialGradient id="bg2" cx="0.8" cy="0.2" r="0.4"><stop offset="0%" stop-color="%23ff6b35" stop-opacity="0.4"/><stop offset="100%" stop-color="%23ff0000" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="800" fill="%230b0e13"/><circle cx="200" cy="150" r="200" fill="url(%23bg1)" opacity="0.6"/><circle cx="900" cy="300" r="150" fill="url(%23bg2)" opacity="0.4"/><circle cx="400" cy="600" r="100" fill="%23ffaa00" opacity="0.3"/><path d="M100 400 Q300 350 500 450 Q700 500 900 420 Q1100 400 1200 450 L1200 800 L0 800 Z" fill="%23003366" opacity="0.5"/><g opacity="0.8"><circle cx="150" cy="200" r="3" fill="%23ffffff"><animate attributeName="cy" values="200;180;200" dur="2s" repeatCount="indefinite"/></circle><circle cx="250" cy="250" r="2" fill="%23ffffff"><animate attributeName="cy" values="250;230;250" dur="2.5s" repeatCount="indefinite"/></circle><circle cx="800" cy="180" r="2.5" fill="%23ff6b35"><animate attributeName="cy" values="180;160;180" dur="3s" repeatCount="indefinite"/></circle></g></svg>'),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="bg1" cx="0.5" cy="0.5" r="0.8"><stop offset="0%" stop-color="%2300d4ff"[...]
                 radial-gradient(circle at 20% 80%, rgba(0,212,255,0.3) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(255,107,53,0.4) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(0,85,255,0.2) 0%, transparent 50%);
@@ -478,6 +478,8 @@
             font-size: 0.85rem; 
             color: #c9d1d9; 
             font-weight: 700; 
+            display: block;
+            margin-top: 15px;
         }
         input, select { 
             width: 100%; 
@@ -489,6 +491,7 @@
             border-radius: 12px;
             transition: 0.3s;
             font-size: 1rem;
+            box-sizing: border-box;
         }
         input:focus, select:focus {
             outline: none;
@@ -516,6 +519,7 @@
             position: relative;
             overflow: hidden;
             margin-top: 10px;
+            box-sizing: border-box;
         }
         .btn::before {
             content: '';
@@ -638,7 +642,6 @@
         <a href="#events">EVENTS</a>
         <a href="#register">REGISTER</a>
         <a href="#contact">SUPPORT</a>
-
     </nav>
 </header>
 
@@ -682,7 +685,7 @@
             <p>Mode: Solo | Map: purgatory</p>
             <p class="price">Entry: ₹50 | Win: ₹2300</p>
         </div>
-         <div class="match-card show BR">
+        <div class="match-card show BR">
             <span class="time-badge">TODAY | 09:00 PM</span>
             <h3>KALHARI</h3>
             <p>Mode: Solo | Map: kalhari</p>
@@ -713,7 +716,7 @@
             <p>Mode: 4v4 | Map: purgatory</p>
             <p class="price">Entry: ₹40 | Win: ₹300</p>
         </div>
-          <div class="match-card CS">
+        <div class="match-card CS">
             <span class="time-badge">TODAY | 09:00 PM</span>
             <h3>CS: KALHARI</h3>
             <p>Mode: 4v4 | Map: kalhari</p>
@@ -726,7 +729,7 @@
 <section id="register">
     <h2>Registration</h2>
     <div class="form-container">
-        <form id="regForm">
+        <form id="regForm" onsubmit="handleSubmit(event)">
             <label>In-Game Name</label>
             <input type="text" id="p_name" placeholder="Your FF Name" required>
             
@@ -734,22 +737,20 @@
             <input type="number" id="p_uid" placeholder="Your UID" required>
             
             <label>Game Mode</label>
-            <select id="p_mode" onchange="updateMatchOptions()">
+            <select id="p_mode" onchange="updateMatchOptions()" required>
+                <option value="">Select Mode</option>
                 <option value="BR">Battle Royale</option>
                 <option value="CS">Clash Squad</option>
             </select>
 
             <label>Select Format</label> 
-             <select id="p_mode" name="p_mode" required>
-        <inputoption value="4v4">4v4</inputoption>
-        <inputoption value="solo">Solo</inputoption>
-        </select>
+            <select id="p_match" required>
+                <option value="">Select Format</option>
+                <option value="4v4">4v4</option>
+                <option value="solo">Solo</option>
+            </select>
 
-         <button type="submit.php">Register</button>
-         </form>
-         </div>
-         </section>
-     <!-- NEW UPI PAYMENT SECTION -->
+            <!-- NEW UPI PAYMENT SECTION -->
             <div class="upi-section">
                 <div style="font-size: 0.8rem; font-weight: 600; color: #3fb950; margin-bottom: 10px;">
                     💳 Pay Entry Fee Here:
@@ -786,7 +787,7 @@
         <div class="contact-card">
             <i class="fas fa-envelope"></i>
             <h3>Email</h3>
-            <p>esportxpunjab@...</p>
+            <p>esportxpunjab@gmail.com</p>
             <a href="mailto:esportxpunjab@gmail.com" class="btn btn-small">Send Mail</a>
         </div>
     </div>
@@ -817,21 +818,28 @@ function showMatches(type, element) {
 function updateMatchOptions() {
     const mode = document.getElementById('p_mode').value;
     const matchSelect = document.getElementById('p_match');
-    matchSelect.innerHTML = "";
+    matchSelect.innerHTML = '<option value="">Select Format</option>';
     
     if(mode === "BR") {
-        ["Solo", "Duo", "Squad Full Map"].forEach(opt => {
+        ["Solo", "Duo", "Squad"].forEach(opt => {
             let el = document.createElement("option"); 
+            el.value = opt.toLowerCase();
             el.textContent = opt; 
             matchSelect.appendChild(el);
         });
-    } else {
-        ["4v4 Squad", "1v1 Custom", "2v2 Duo"].forEach(opt => {
+    } else if(mode === "CS") {
+        ["4v4", "1v1", "2v2"].forEach(opt => {
             let el = document.createElement("option"); 
+            el.value = opt;
             el.textContent = opt; 
             matchSelect.appendChild(el);
         });
     }
+}
+
+function handleSubmit(event) {
+    event.preventDefault();
+    sendToWhatsApp();
 }
 
 function sendToWhatsApp() {
@@ -840,12 +848,12 @@ function sendToWhatsApp() {
     const mode = document.getElementById('p_mode').value;
     const match = document.getElementById('p_match').value;
     
-    if(!name || !uid) { 
+    if(!name || !uid || !mode || !match) { 
         alert("⚠️ Please fill all details!"); 
         return; 
     }
 
-    const message = `*🏆 NEW REGISTRATION 🏆*%0A*👤 Name:* ${name}%0A*🆔 UID:* ${uid}%0A*🎮 Game:* ${mode}%0A*⚔️ Format:* ${match}%0A*💳 UPI:* FAM@7087912098%0A*✅ Payment:* Screenshot Sent%0A*🔥 Ready to Battle!*`;
+    const message = `*🏆 NEW REGISTRATION 🏆*%0A*👤 Name:* ${name}%0A*🆔 UID:* ${uid}%0A*🎮 Game:* ${mode}%0A*⚔️ Format:* ${match}%0A*💳 UPI:* FAM@7087912098%0A*✅ Please confirm payment!`;
     window.open(`https://wa.me/917087912098?text=${message}`, '_blank');
 }
 
@@ -853,7 +861,9 @@ document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if(target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     });
 });
 </script>
