@@ -22,56 +22,31 @@
     <div class="particle particle-3"></div>
   </div>
 
-  <!-- Username Modal (Initially Visible) -->
-  <div id="usernameModal" class="username-modal-overlay active">
-    <div class="username-modal glass">
-      <div class="modal-header">
-        <h1 class="modal-title">Welcome to +1 Medical Chat</h1>
-        <p class="modal-subtitle">Join our community</p>
+  <!-- Welcome Message Section -->
+  <div class="welcome-message-container">
+    <div class="welcome-content glass">
+      <div class="welcome-icon-large">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/>
+        </svg>
       </div>
       
-      <div class="modal-content">
-        <div class="welcome-icon">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/>
-          </svg>
-        </div>
+      <h1 class="welcome-title">+1 Medical Chat</h1>
+      
+      <div class="welcome-message-box">
+        <p class="welcome-message-text animated-text">
+          ✨ This Platform is Built to Reduce Hesitation Among Students to Talk and Know Each Other ✨
+        </p>
+      </div>
 
-        <form id="usernameForm" class="username-form">
-          <div class="form-group">
-            <label for="usernameInput" class="form-label">Enter Your Name</label>
-            <div class="input-wrapper">
-              <input 
-                type="text" 
-                id="usernameInput" 
-                class="username-input" 
-                placeholder="Your name here..." 
-                required 
-                maxlength="30"
-              />
-              <span class="input-focus-line"></span>
-            </div>
-            <p class="form-hint">Your name helps build community trust</p>
-          </div>
-
-          <button type="submit" class="btn-join-medical">
-            <span class="btn-text">Enter Medical Chat</span>
-            <span class="btn-arrow">→</span>
-            <div class="btn-glow"></div>
-          </button>
-        </form>
-
-        <div class="trust-message">
-          <p class="trust-text">
-            ✨ <span class="highlight">This Platform is Built to Reduce Hesitation Among Students to Talk and Know Each Other</span> ✨
-          </p>
-        </div>
+      <div class="welcome-subtext">
+        <p>Connect • Communicate • Collaborate</p>
       </div>
     </div>
   </div>
 
   <!-- Chat Container with Medical Styling -->
-  <div id="chatContainer" class="chat-container glass floating-chat medical-glass hidden">
+  <div class="chat-container glass floating-chat medical-glass">
     <!-- Header with Medical Branding -->
     <div class="chat-header">
       <div class="header-icon">
@@ -79,10 +54,10 @@
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9h-3v-3.5H9.5V11h-3v1.5h3v3.5h3v-3.5h3V11z" fill="currentColor"/>
         </svg>
       </div>
-      <h2 class="medical-title">+1 Medical Chat</h2>
+      <h2 class="medical-title">Medical Chat</h2>
       <div class="status-indicator">
         <span class="pulse-dot"></span>
-        <span class="status-text" id="statusUsername">Connected</span>
+        <span class="status-text">Connected</span>
       </div>
     </div>
     
