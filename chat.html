@@ -20,12 +20,29 @@
   <div class="chat-container glass floating-chat">
     <h2>Connect11 Chat</h2>
     <div id="chatBox" class="chat-box"></div>
-    <div class="input-area">
-      <input type="text" id="messageInput" placeholder="Type your message..." />
 
-      <!-- icons: send, camera, more -->
+    <div class="input-area">
+      <!-- Long expanding input for mobile (textarea) -->
+      <textarea id="messageInput" placeholder="Type your message... (Shift+Enter for newline, Enter to send)" rows="1"></textarea>
+
+      <!-- Send button first -->
+      <button id="sendBtn" class="icon-btn send" aria-label="send" title="Send">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 2L11 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Camera button second -->
+      <button id="cameraBtn" class="icon-btn" aria-label="camera" title="Camera">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 7H6L7 5H17L18 7H20C21.1 7 22 7.9 22 9V19C22 20.1 21.1 21 20 21H4C2.9 21 2 20.1 2 19V9C2 7.9 2.9 7 4 7Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="13" r="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- More (three dots) third -->
       <button id="moreBtn" class="icon-btn" aria-label="more" title="More">
-        <!-- three dots -->
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="5" cy="12" r="2" fill="currentColor" />
           <circle cx="12" cy="12" r="2" fill="currentColor" />
@@ -33,25 +50,9 @@
         </svg>
       </button>
 
-      <button id="cameraBtn" class="icon-btn" aria-label="camera" title="Camera">
-        <!-- camera icon -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 7H6L7 5H17L18 7H20C21.1 7 22 7.9 22 9V19C22 20.1 21.1 21 20 21H4C2.9 21 2 20.1 2 19V9C2 7.9 2.9 7 4 7Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="12" cy="13" r="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-
-      <button id="sendBtn" class="icon-btn send" aria-label="send" title="Send">
-        <!-- paper-plane icon -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M22 2L11 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-
-      <!-- Attachments panel (hidden by default) -->
+      <!-- Attachments panel (opened via More button) -->
       <div id="attachmentsPanel" class="attachments" aria-hidden="true">
-        <label for="fileInput" class="attach-option">📎 Attach file</label>
+        <button class="attach-option" id="attachOption">📎 Attach file</button>
         <input type="file" id="fileInput" accept="image/*, video/*, audio/*" />
         <button id="closeAttachments" class="attach-close">Close</button>
       </div>
