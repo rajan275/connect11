@@ -3,45 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Connect11 Chat</title>
+  <title>+1 Medical Chat</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="chat-page">
-  <!-- Ambient Animated Background Bubbles -->
+<body class="chat-page medical-theme">
+  <!-- Animated Medical Background -->
+  <div class="medical-background"></div>
+  
+  <!-- Ambient Animated Particles -->
   <div class="ambient-bubbles">
     <div class="bubble bubble-1"></div>
     <div class="bubble bubble-2"></div>
     <div class="bubble bubble-3"></div>
     <div class="bubble bubble-4"></div>
     <div class="bubble bubble-5"></div>
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
   </div>
 
-  <!-- Chat Container -->
-  <div class="chat-container glass floating-chat">
-    <h2>Connect11 Chat</h2>
+  <!-- Chat Container with Medical Styling -->
+  <div class="chat-container glass floating-chat medical-glass">
+    <!-- Header with Medical Branding -->
+    <div class="chat-header">
+      <div class="header-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9h-3v-3.5H9.5V11h-3v1.5h3v3.5h3v-3.5h3V11z" fill="currentColor"/>
+        </svg>
+      </div>
+      <h2 class="medical-title">+1 Medical Chat</h2>
+      <div class="status-indicator">
+        <span class="pulse-dot"></span>
+        <span class="status-text">Connected</span>
+      </div>
+    </div>
+    
     <div id="chatBox" class="chat-box"></div>
 
-    <div class="input-area">
+    <div class="input-area medical-input-area">
       <!-- Camera button -->
-      <button id="cameraBtn" class="icon-btn" aria-label="camera" title="Camera">
+      <button id="cameraBtn" class="icon-btn medical-icon-btn" aria-label="camera" title="Camera">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M4 7H6L7 5H17L18 7H20C21.1 7 22 7.9 22 9V19C22 20.1 21.1 21 20 21H4C2.9 21 2 20.1 2 19V9C2 7.9 2.9 7 4 7Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="12" cy="13" r="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
 
-      <!-- Message input (pills are styled via CSS) -->
-      <textarea id="messageInput" placeholder="Message... (Shift+Enter for newline)" rows="1"></textarea>
+      <!-- Message input -->
+      <textarea id="messageInput" placeholder="Describe your symptoms or ask a health question..." rows="1" class="medical-textarea"></textarea>
 
-      <!-- Send button -->
-      <button id="sendBtn" class="icon-btn send" aria-label="send" title="Send">
+      <!-- Send button with medical styling -->
+      <button id="sendBtn" class="icon-btn send medical-send-btn" aria-label="send" title="Send">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M22 2L11 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
 
-      <!-- Hidden file input (used by camera or future controls) -->
+      <!-- Hidden file input -->
       <input type="file" id="fileInput" accept="image/*, video/*, audio/*" style="display:none" />
     </div>
   </div>
