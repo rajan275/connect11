@@ -23,6 +23,24 @@ body {
   100% { background-position: 105% 105%; }
 }
 
+/* Index (homepage) background restored: apply when NOT on chat page */
+body:not(.chat-page)::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://i.ytimg.com/vi/Km4GXrW-Tsg/maxresdefault.jpg') repeat;
+  z-index: -2;
+  animation: moveBackground 30s ease-in-out infinite;
+}
+
+@keyframes moveBackground {
+  0% { background-position: 0 0; }
+  100% { background-position: 105% 105%; }
+}
+
 /* Use the provided background image (cover) for the chat page only */
 body.chat-page::before {
   content: "";
@@ -39,12 +57,6 @@ body.chat-page::before {
   filter: saturate(95%) contrast(95%);
 }
 
-@keyframes moveBackground {
-  0% { background-position: 0 0; }
-  100% { background-position: 105% 105%; }
-}
-
-/* Slight global overlay to keep contrasts consistent (scoped to chat page) */
 body.chat-page::after{
   content: "";
   position: fixed;
@@ -54,14 +66,13 @@ body.chat-page::after{
 }
 
 /* =========================================================
-   GLASSMORPHISM & GENERAL UI
+   GLASSMORPHISM & GENERAL UI (homepage/header restored)
    ========================================================= */
 .glass {
-  /* darker glass so chat content is high-contrast on top of the background image */
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(6px) saturate(120%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.6), 0 0 20px rgba(0, 255, 204, 0.06);
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
   padding: 1rem;
   margin: 1rem;
   animation: fadeIn 1s ease-out;
@@ -93,159 +104,514 @@ body.chat-page::after{
 }
 
 /* =========================================================
-   CHAT CONTAINER & BOX
+   HEADER SECTION & RIGHT NAVIGATION (homepage)
    ========================================================= */
-.chat-container{
-  width: 100%;
-  max-width: 900px;
-  margin: 1.25rem auto;
+.header-section {
+  position: relative;
+  text-align: center;
+  padding: 3.8rem 1.5rem 2.5rem 1.5rem;
+  animation: fadeIn 1.5s ease-out;
+  background: url('https://img.freepik.com/premium-vector/landing-page-template-website-glass-partition-with-floating-spheres-illustration_206325-3278.jpg?w=1800') center/cover no-repeat;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+  animation: glowingBackground 10s ease-in-out infinite;
+}
+
+@keyframes glowingBackground {
+  0% { background-position: 0 0; }
+  100% { background-position: 105% 105%; }
+}
+
+.header-section h2 {
+  font-size: 2.0rem;
+  margin-bottom: 0.5rem;
+  color: #00ffcc;
+  animation: neonPulse 2s infinite alternate;
+}
+
+@keyframes neonPulse {
+  0% { text-shadow: 0 0 5px #00ffcc; }
+  100% { text-shadow: 0 0 20px #00ffcc; }
+}
+
+.header-section p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* Header Navigation (Right Side) */
+.header-nav-right {
+  position: absolute;
+  top: 18px;
+  right: 20px;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.04);
+  gap: 0.8rem;
+  align-items: center;
 }
 
-.chat-header{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:8px 12px;
-  border-bottom:1px solid rgba(255,255,255,0.04);
+.nav-btn-glow {
+  text-decoration: none;
+  color: #00ffcc;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.55rem 1.1rem;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(0, 255, 204, 0.4);
+  box-shadow: inset 0 0 10px rgba(0, 255, 204, 0.1), 0 4px 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.fui-logo{
-  width:44px;
-  height:44px;
-  border-radius:10px;
-  background: conic-gradient(#ff4d6d,#6b5bff,#00d4ff,#ff4d6d);
-  animation: fui-spin 6s linear infinite, fui-pulse 3s ease-in-out infinite;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.6), 0 0 22px rgba(107,91,255,0.06);
-  flex:0 0 44px;
+.nav-btn-glow:hover {
+  color: #000;
+  background: #00ffcc;
+  border-color: #00ffcc;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.8), 0 0 25px rgba(0, 255, 204, 0.4);
+  transform: translateY(-2px) scale(1.03);
 }
 
-.header-title{
-  font-weight:800;
-  font-size:20px;
-  line-height:1;
-  color: #ffffff;
-  background: linear-gradient(90deg,#ff4d6d,#6b5bff,#00d4ff);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  background-size:200% 100%;
-  animation: slideColors 6s linear infinite;
-}
-
-@keyframes slideColors{
-  0%{ background-position:0% 50%; }
-  50%{ background-position:100% 50%; }
-  100%{ background-position:0% 50%; }
-}
-
-/* Chat messages area */
-.chat-box{
-  height: calc(70vh - 120px);
-  min-height: 260px;
-  overflow-y: auto;
-  padding: 12px;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
-
-.message{
-  max-width:82%;
-  padding:10px 14px;
-  border-radius:14px;
-  color:#e7f6ff;
-  background: rgba(255,255,255,0.02);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-  word-wrap:break-word;
-  font-size:15px;
-  line-height:1.4;
-  align-self:flex-start;
-}
-
-/* user messages aligned to the right */
-.message.user{
-  align-self:flex-end;
-  background: linear-gradient(135deg,#0b1220,#0f1724);
-  color:#e6eef8;
-}
-
-/* others */
-.message.other{
-  align-self:flex-start;
-  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-  color:#eaf7ff;
-}
-
-/* Animations */
-@keyframes fui-spin{ 0%{ transform: rotate(0deg); } 100%{ transform: rotate(360deg); } }
-@keyframes fui-pulse{
-  0%,100%{ transform: scale(1); filter:brightness(1); }
-  50%{ transform: scale(1.05); filter:brightness(1.08); }
+.nav-btn-glow:active {
+  transform: translateY(0) scale(0.98);
 }
 
 /* =========================================================
-   INPUT AREA (textarea adjustments for mobile - big pill) 
+   ADVANCED "JOIN THE ROOM" HERO BUTTON
    ========================================================= */
-.input-area{
-  display:flex;
-  gap:8px;
-  align-items:flex-end;
-  padding:8px;
+.btn-join-advanced {
+  position: relative;
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 1.1rem 2.8rem;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #000000;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #00ffcc 0%, #00e5ff 50%, #00aaff 100%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 0 15px rgba(0, 255, 204, 0.6),
+    0 0 30px rgba(0, 229, 255, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: auraGlow 3s infinite alternate;
 }
 
-.input-area textarea{
-  flex:1 1 auto;
-  min-height:48px; /* larger, like Telegram */
-  max-height:140px;
-  padding:12px 16px;
-  font-size:16px;
-  line-height:1.3;
-  color:#ffffff;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 999px; /* pill shape */
-  outline:none;
-  resize:none;
-  transition: box-shadow .2s ease, transform .12s ease;
+.btn-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
 }
 
-.input-area textarea::placeholder{
-  color: rgba(255,255,255,0.6);
+.btn-icon {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
+  animation: pulseIcon 1.5s infinite alternate;
 }
 
-.icon-btn{
-  width:44px;
-  height:44px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:12px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-  border:1px solid rgba(255,255,255,0.04);
-  color: #fff;
+.btn-arrow {
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
 }
 
-.icon-btn.send{
-  background: linear-gradient(90deg,#ff4d6d,#6b5bff);
+.btn-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  transform: skewX(-25deg);
+  z-index: 1;
+  animation: sweepLight 4s infinite ease-in-out;
+}
+
+.btn-join-advanced:hover {
+  transform: scale(1.08) translateY(-4px);
+  background: linear-gradient(135deg, #00ffff 0%, #00ffcc 50%, #00e5ff 100%);
+  box-shadow: 
+    0 0 25px rgba(0, 255, 204, 0.9),
+    0 0 50px rgba(0, 229, 255, 0.7),
+    0 0 75px rgba(0, 170, 255, 0.5),
+    inset 0 2px 6px rgba(255, 255, 255, 1);
+}
+
+.btn-join-advanced:hover .btn-arrow {
+  transform: translateX(6px);
+}
+
+.btn-join-advanced:active {
+  transform: scale(0.98) translateY(0);
+  box-shadow: 
+    0 0 15px rgba(0, 255, 204, 0.8),
+    inset 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes sweepLight {
+  0% { left: -100%; }
+  30% { left: 150%; }
+  100% { left: 150%; }
+}
+
+@keyframes auraGlow {
+  0% {
+    box-shadow: 
+      0 0 15px rgba(0, 255, 204, 0.5),
+      0 0 30px rgba(0, 229, 255, 0.3);
+  }
+  100% {
+    box-shadow: 
+      0 0 25px rgba(0, 255, 204, 0.8),
+      0 0 45px rgba(0, 229, 255, 0.6);
+  }
+}
+
+@keyframes pulseIcon {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.2); }
+}
+
+/* =========================================================
+   BODY SECTION & MOBILE HEADING ADJUSTMENTS
+   ========================================================= */
+.body-section {
+  max-width: 800px;
+  margin: 1.5rem auto;
+  padding: 1.8rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.15);
+}
+
+.body-section .section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: #00ffcc;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 8px rgba(0, 255, 204, 0.4);
+}
+
+.body-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.special-line {
+  font-size: 1.1rem;
+  color: #ff66cc;
+  text-shadow: 0 0 8px #ff66cc, 0 0 15px #ff3399;
+  animation: glowPulse 3s infinite alternate;
+  font-weight: bold;
+  margin-top: 0.8rem;
+}
+
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 5px #ff66cc; }
+  100% { text-shadow: 0 0 20px #ff3399; }
+}
+
+/* =========================================================
+   COMPACT IMPRESSIVE FOOTER AT BOTTOM
+   ========================================================= */
+.modern-footer {
+  margin-top: auto;
+  padding: 0.8rem 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.8px;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.6);
+  border-top: 1px solid rgba(0, 255, 204, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.modern-footer p {
+  display: inline-block;
+}
+
+.modern-footer .dev-name {
+  font-weight: bold;
+  color: #ffcc00;
+  text-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+}
+
+/* =========================================================
+   CHAT INPUT AREA & 3D BUTTONS
+   ========================================================= */
+.input-area {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.input-area input[type="text"] {
+  color: #000000; /* Black text for maximum visibility */
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.4); /* Dark background preserved */
+  border: 1px solid #00ffcc;
+  border-radius: 12px;
+  padding: 0.7rem;
+  width: 70%;
+  font-size: 1rem;
+  outline: none;
+  animation: floatInput 4s ease-in-out infinite;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.input-area input[type="text"]::placeholder {
+  color: #a0a0a0;
+  opacity: 0.8;
+}
+
+@keyframes floatInput {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+.input-area input[type="text"]:focus {
+  box-shadow: 0 0 15px #00ffcc, 0 0 25px rgba(0, 255, 204, 0.6);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.input-area button {
+  padding: 0.6rem 1rem;
+  background: #00ffcc;
   border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.3s ease;
+  color: #000;
+  text-transform: uppercase;
+  animation: floatButton 4s ease-in-out infinite;
 }
 
-/* mobile-specific: make chat container edge-to-edge and input comfortable */
-@media (max-width: 650px){
-  .chat-container{ margin: 8px; border-radius: 14px; padding:10px; }
-  .header-title{ font-size:18px; }
-  .fui-logo{ width:40px; height:40px; }
-  .chat-box{ height: calc(65vh - 120px); padding:10px; }
-  .input-area textarea{ min-height:52px; font-size:15px; }
+.input-area button:hover {
+  background: #00ffff;
+  transform: scale(1.05);
 }
 
-/* accessibility */
-@media (prefers-contrast: more){
-  .message{ background: rgba(255,255,255,0.06); }
+@keyframes floatButton {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
+}
+
+.input-area input[type="file"] {
+  display: none;
+}
+
+.btn-3d {
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(145deg, #00ffcc, #00ccaa);
+  border: none;
+  border-radius: 12px;
+  color: #000;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 4px 4px 8px #000, -4px -4px 8px #00ffee;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-3d:hover {
+  transform: translateY(-3px);
+  box-shadow: 6px 6px 12px #000, -6px -6px 12px #00ffee;
+}
+
+/* =========================================================
+   CHAT PAGE AMBIENT BUBBLES & FLOATING ANIMATIONS
+   ========================================================= */
+.floating-chat {
+  animation: floatChat 6s ease-in-out infinite, fadeIn 1s ease-out;
+}
+
+@keyframes floatChat {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.ambient-bubbles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(0, 255, 204, 0.4), rgba(0, 170, 255, 0.1));
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+  animation: riseAndFloat 12s infinite linear;
+}
+
+.bubble-1 {
+  width: 80px;
+  height: 80px;
+  left: 10%;
+  bottom: -100px;
+  animation-duration: 14s;
+  animation-delay: 0s;
+}
+
+.bubble-2 {
+  width: 40px;
+  height: 40px;
+  left: 30%;
+  bottom: -100px;
+  animation-duration: 10s;
+  animation-delay: 2s;
+}
+
+.bubble-3 {
+  width: 110px;
+  height: 110px;
+  left: 55%;
+  bottom: -120px;
+  animation-duration: 18s;
+  animation-delay: 4s;
+}
+
+.bubble-4 {
+  width: 60px;
+  height: 60px;
+  left: 75%;
+  bottom: -100px;
+  animation-duration: 12s;
+  animation-delay: 1s;
+}
+
+.bubble-5 {
+  width: 90px;
+  height: 90px;
+  left: 90%;
+  bottom: -110px;
+  animation-duration: 16s;
+  animation-delay: 3s;
+}
+
+@keyframes riseAndFloat {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-50vh) translateX(30px) scale(1.1);
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(-20px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.chat-box .message {
+  animation: popInMessage 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popInMessage {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================================
+   MOBILE RESPONSIVENESS
+   ========================================================= */
+@media (max-width: 650px) {
+  .header-section {
+    padding-top: 4.8rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .header-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .header-section p {
+    font-size: 0.95rem;
+  }
+
+  .header-nav-right {
+    top: 12px;
+    right: 50%;
+    transform: translateX(50%);
+    width: auto;
+    justify-content: center;
+  }
+
+  .nav-btn-glow {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .btn-join-advanced {
+    padding: 0.85rem 1.8rem;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  .body-section .section-title {
+    font-size: 1.15rem;
+  }
+
+  .body-section p {
+    font-size: 0.9rem;
+  }
+
+  .special-line {
+    font-size: 0.95rem;
+  }
+
+  .modern-footer {
+    font-size: 0.75rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .input-area textarea {
+    min-height:56px;
+  }
 }
