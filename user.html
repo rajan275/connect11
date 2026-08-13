@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enter Name</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="glass body-section">
+    <h2>Welcome to Connect11</h2>
+    <p>Please enter your name to join the chat room:</p>
+    <input type="text" id="usernameInput" placeholder="Enter your name..." />
+    <button onclick="saveName()">Join Chat</button>
+  </div>
+
+  <script>
+    function saveName() {
+      const name = document.getElementById("usernameInput").value.trim();
+      if (name === "") {
+        alert("Please enter your name");
+        return;
+      }
+      // Save name in browser storage
+      localStorage.setItem("chatUsername", name);
+      // Redirect to chat page
+      window.location.href = "chat.html";
+    }
+  </script>
+</body>
+</html>
