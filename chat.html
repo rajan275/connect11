@@ -41,7 +41,7 @@
         </svg>
       </button>
 
-      <!-- More (three dots) third -->
+      <!-- More (three dots) third - now triggers file picker directly -->
       <button id="moreBtn" class="icon-btn" aria-label="more" title="More">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="5" cy="12" r="2" fill="currentColor" />
@@ -50,12 +50,8 @@
         </svg>
       </button>
 
-      <!-- Attachments panel (opened via More button) -->
-      <div id="attachmentsPanel" class="attachments" aria-hidden="true">
-        <button class="attach-option" id="attachOption">📎 Attach file</button>
-        <input type="file" id="fileInput" accept="image/*, video/*, audio/*" />
-        <button id="closeAttachments" class="attach-close">Close</button>
-      </div>
+      <!-- Hidden file input only; opened by More button -->
+      <input type="file" id="fileInput" accept="image/*, video/*, audio/*" style="display:none" />
     </div>
   </div>
 
